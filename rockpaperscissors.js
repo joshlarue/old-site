@@ -31,4 +31,10 @@ function playRound(playerChoice, computerChoice) {
     }
 }
 
-let playerChoice = prompt("What's your choice?").toLowerCase();
+function getPlayerChoice() {
+    let playerChoice = prompt("What's your choice?").toLowerCase();
+}
+
+if (playerChoice !== ("rock" || "paper" || "scissors")) {
+    getPlayerChoice();
+}
