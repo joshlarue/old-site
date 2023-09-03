@@ -16,3 +16,17 @@ function getComputerChoice() {
     }
 }
 
+function playRound(playerChoice, computerChoice) {
+    // tie game
+    if (playerChoice == computerChoice) {
+        console.log("You tied!");
+    } else if (
+        (computerChoice == "rock" && playerChoice == "scissors") ||
+        (computerChoice == "scissors" && playerChoice == "paper") ||
+        (computerChoice == "paper" && playerChoice == "rock")
+        ) {
+        console.log("You lost!");
+    } else {
+        console.log("You won!");
+    }
+}
