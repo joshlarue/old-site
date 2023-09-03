@@ -25,8 +25,8 @@ function playRound(playerChoice, computerChoice) {
         (computerChoice == "scissors" && playerChoice == "paper") ||
         (computerChoice == "paper" && playerChoice == "rock")
         ) {
-        console.log("You lost!");
+        console.log(`You lost! ${computerChoice} beats ${playerChoice}.`);
     } else {
-        console.log("You won!");
+        console.log(`You won! ${playerChoice} beats ${computerChoice}.`);
     }
 }
