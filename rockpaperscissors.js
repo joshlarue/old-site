@@ -30,3 +30,5 @@ function playRound(playerChoice, computerChoice) {
         console.log(`You won! ${playerChoice} beats ${computerChoice}.`);
     }
 }
+
+let playerChoice = prompt("What's your choice?").toLowerCase();
