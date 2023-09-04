@@ -18,9 +18,6 @@ function getComputerChoice() {
 
 function playRound(playerChoice, computerChoice) {
     
-    let computerChoice = getComputerChoice();
-    let playerChoice = getPlayerChoice();
-
     if (playerChoice == computerChoice) {
         return "You tied!";
     } else if (
@@ -44,6 +41,9 @@ if (playerChoice !== ("rock" || "paper" || "scissors")) {
 
 function game() {
     for (let i = 0; i < 4; i++) {
-        playRound();
+        let computerChoice = getComputerChoice();
+        let playerChoice = getPlayerChoice();
+
+        console.log(playRound(computerChoice, playerChoice));
     }
 }
