@@ -17,7 +17,10 @@ function getComputerChoice() {
 }
 
 function playRound(playerChoice, computerChoice) {
-    // tie game
+    
+    let computerChoice = getComputerChoice();
+    let playerChoice = prompt("Rock, paper, or scissors?");
+
     if (playerChoice == computerChoice) {
         return "You tied!";
     } else if (
@@ -40,5 +43,7 @@ if (playerChoice !== ("rock" || "paper" || "scissors")) {
 }
 
 function game() {
-    
+    for (let i = 0; i < 4; i++) {
+        playRound();
+    }
 }
