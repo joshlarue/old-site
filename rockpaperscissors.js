@@ -19,7 +19,7 @@ function getComputerChoice() {
 function playRound(playerChoice, computerChoice) {
     
     let computerChoice = getComputerChoice();
-    let playerChoice = prompt("Rock, paper, or scissors?");
+    let playerChoice = getPlayerChoice();
 
     if (playerChoice == computerChoice) {
         return "You tied!";
