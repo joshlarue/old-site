@@ -19,15 +19,15 @@ function getComputerChoice() {
 function playRound(playerChoice, computerChoice) {
     // tie game
     if (playerChoice == computerChoice) {
-        console.log("You tied!");
+        return "You tied!";
     } else if (
         (computerChoice == "rock" && playerChoice == "scissors") ||
         (computerChoice == "scissors" && playerChoice == "paper") ||
         (computerChoice == "paper" && playerChoice == "rock")
         ) {
-        console.log(`You lost! ${computerChoice} beats ${playerChoice}.`);
+        return `You lost! ${computerChoice} beats ${playerChoice}.`;
     } else {
-        console.log(`You won! ${playerChoice} beats ${computerChoice}.`);
+        return `You won! ${playerChoice} beats ${computerChoice}.`;
     }
 }
 
@@ -37,4 +37,8 @@ function getPlayerChoice() {
 
 if (playerChoice !== ("rock" || "paper" || "scissors")) {
     getPlayerChoice();
+}
+
+function game() {
+    
 }
