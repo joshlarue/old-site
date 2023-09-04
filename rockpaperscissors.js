@@ -35,14 +35,15 @@ function getPlayerChoice() {
     let playerChoice = prompt("What's your choice?").toLowerCase();
 }
 
-if (playerChoice !== ("rock" || "paper" || "scissors")) {
-    getPlayerChoice();
-}
-
 function game() {
     for (let i = 0; i < 4; i++) {
         let computerChoice = getComputerChoice();
         let playerChoice = getPlayerChoice();
+
+        if (playerChoice !== ("rock" || "paper" || "scissors")) {
+            console.log("You need to choose either rock, paper or scissors.");
+            getPlayerChoice();
+        }
 
         console.log(playRound(computerChoice, playerChoice));
     }
