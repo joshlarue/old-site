@@ -1,4 +1,3 @@
-// return rock, paper, or scissors randomly
 function getComputerChoice() {
     let computerNum = Math.floor(Math.random() * 3 + 1);
     let computerChoice = undefined;
