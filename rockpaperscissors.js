@@ -1,6 +1,7 @@
 function getComputerChoice() {
     let computerNum = Math.floor(Math.random() * 3 + 1);
-    let computerChoice = undefined;
+    let computerChoice;
+    let playerchoice;
 
     switch (+computerNum) {
         case 1: 
