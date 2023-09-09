@@ -37,7 +37,7 @@ function getPlayerChoice() {
 }
 
 function game() {
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 3; i++) {
         let computerChoice = getComputerChoice();
         let playerChoice = getPlayerChoice();
 
@@ -46,6 +46,6 @@ function game() {
             getPlayerChoice();
         }
 
-        console.log(playRound(computerChoice, playerChoice));
+        console.log(playRound(playerChoice, computerChoice));
     }
 }
