@@ -9,7 +9,7 @@ startGame.addEventListener("click", () =>
 
 const playerScore = document.querySelector(".player-score");
 const computerScore = document.querySelector(".computer-score");
-const playerScoreInput = document.querySelector(".player-input");
+const playerChoiceInput = document.getElementById("player-input");
 
 function getComputerChoice() {
     let computerChoice;
@@ -34,17 +34,17 @@ function getComputerChoice() {
 function playRound(playerChoice, computerChoice) {
 
     if (playerChoice == computerChoice) {
-        alert("You tied!");
+        console.log("You tied!");
     } else if (
         (playerChoice == "rock" && computerChoice == "scissors") ||
         (playerChoice == "scissors" && computerChoice == "paper") ||
         (playerChoice == "paper" && computerChoice == "rock")
         ) {
-            alert(`You won! ${playerChoice} beats ${computerChoice}.`);
+            console.log(`You won! ${playerChoice} beats ${computerChoice}.`);
             score++;
             playerScore.textContent = `Your score is ${score}.`
         } else {
-            alert(`You lost! ${computerChoice} beats ${playerChoice}.`);
+            console.log(`You lost! ${computerChoice} beats ${playerChoice}.`);
             cScore++;
             computerScore.textContent = `Computer score is ${cScore}.`;
         }
@@ -52,27 +52,26 @@ function playRound(playerChoice, computerChoice) {
 }
 
 function game() {
+    console.log("game started");
     score = 0;
 
     for (let i = 0; i < 3; i++) {
         let playerChoice;
 
-        playerScoreInput.addEventListener("keypress", (event) => {
-        if (playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors") {
-            alert("Choose either rock, paper, or scissors!");
-        }
-        if (event.key === "Enter") {
-            playerChoice = playerChoiceInput.value.toLowerCase();
-        }
-        console.log(playerChoice);
-        return playerChoice;
-    });
-        
-        let computerChoice = getComputerChoice();
+        playerChoiceInput.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+                playerChoice = playerChoiceInput.value.toLowerCase();
+                console.log(playerChoice);
 
-        alert(playRound(playerChoice, computerChoice));
-
+                if (playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors") { 
+                    console.log("Choose either rock, paper, or scissors!");
+                }
+                return playerChoice;
+            }
+            let computerChoice = getComputerInput();
+            console.log(playRound(playerChoice, computerChoice));
+        });
     }
 
-    alert(`Your score was ${score}.`);
+    console.log(`Your score was ${score}.`);
 }
