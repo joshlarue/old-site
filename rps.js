@@ -1,4 +1,14 @@
 let score = 0;
+let cScore = 0;
+
+const startGame = document.querySelector(".start-game");
+
+startGame.addEventListener("click", () =>
+    game()
+);
+
+const playerScore = document.querySelector(".player-score");
+const computerScore = document.querySelector(".computer-score");
 
 function getComputerChoice() {
     let computerChoice;
@@ -42,15 +52,18 @@ function playRound(playerChoice, computerChoice) {
         ) {
             alert(`You won! ${playerChoice} beats ${computerChoice}.`);
             score++;
+            playerScore.textContent = `Your score is ${score}.`
         } else {
             alert(`You lost! ${computerChoice} beats ${playerChoice}.`);
+            cScore++;
+            computerScore.textContent = `Computer score is ${cScore}.`;
         }
     return score;
 }
 
 function game() {
     score = 0;
-    
+
     for (let i = 0; i < 3; i++) {
         let playerChoice = getPlayerChoice();
         let computerChoice = getComputerChoice();
