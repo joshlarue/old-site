@@ -68,10 +68,9 @@ function game() {
                 }
                 return playerChoice;
             }
-            let computerChoice = getComputerInput();
+            let computerChoice = getComputerChoice();
             console.log(playRound(playerChoice, computerChoice));
         });
     }
-
     console.log(`Your score was ${score}.`);
 }
