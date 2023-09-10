@@ -10,7 +10,7 @@ startGame.addEventListener("click", () =>
 const playerScore = document.querySelector(".player-score");
 const computerScore = document.querySelector(".computer-score");
 const playerInputField = document.getElementById("player-input");
-const playerInputButton = document.getElementById("input-button");
+const playerInputButton = document.querySelector(".input-button");
 playerInputField.value = '';
 
 function getComputerChoice() {
@@ -53,11 +53,7 @@ function game() {
     console.log("game started");
     score = 0;
     cScore = 0;
-
-    playerChoice = playerInput();
-    console.log(playerChoice);
-    playRound(playerChoice, getComputerChoice());
-    console.log("played round");
+    playerInput();
 }
 
 function playerInput() {
@@ -70,11 +66,11 @@ function playerInput() {
             playerInputField.content = '';
         } else {
             console.log(playerChoice);
+            playRound(playerChoice, getComputerChoice());
             return playerChoice;
         }
         playerInputField.content = '';
         console.log(playerChoice);
+        return playerChoice;
     });
-    console.log(`Playerchoice is ${playerChoice}.`);
-    return playerChoice;
 }
