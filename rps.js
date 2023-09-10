@@ -11,7 +11,6 @@ const playerScore = document.querySelector(".player-score");
 const computerScore = document.querySelector(".computer-score");
 const playerInputField = document.getElementById("player-input");
 playerInputField.value = '';
-console.log(playerInputField);
 
 function getComputerChoice() {
     let computerChoice;
@@ -29,7 +28,7 @@ function getComputerChoice() {
     }
 }
 
-function playRound(playerChoice, computerChoice) {
+function playRound(playerChoice, computerChoice) {    
     if (playerChoice == computerChoice) {
         console.log("You tied!");
     } else if (
@@ -45,6 +44,7 @@ function playRound(playerChoice, computerChoice) {
             cScore++;
             computerScore.textContent = `Computer score is ${cScore}.`;
         }
+        console.log(`Your score is ${score}.`);
     return score;
 }
 
@@ -52,24 +52,18 @@ function game() {
     console.log("game started");
     score = 0;
     cScore = 0;
-    let round = 0;
 
-    if (round >=3) {
-        console.log("Game over!");
-        score = 0;
-        cScore = 0;
-        playerInputField.content = '';
-        return 0;
+    for (let i = 0; i < 3; i++) {
+        playerChoice = playerInput();
+        if (playerChoice === undefined) {
+            console.log("Nothing to see here.");
+        } else {
+            playRound(playerChoice, getComputerChoice());
+        }
     }
-
-    playerInput((playerChoice) => {
-        console.log(playRound(playerChoice, getComputerChoice()));
-        console.log(`Your score is ${score}.`);
-        round++;
-    });
 }
 
-function playerInput(callback) {
+function playerInput() {
     playerInputField.addEventListener("keypress", function handleKeyPress(event) {
         if (event.key === "Enter") {
             let playerChoice = playerInputField.value.toLowerCase();
