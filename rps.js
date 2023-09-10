@@ -53,18 +53,25 @@ function game() {
     score = 0;
     cScore = 0;
 
-    for (let i = 0; i < 3; i++) {
+    let roundLoop = new Promise(function (resolve, reject) {
         playerChoice = playerInput();
+    });
+
+    roundLoop.then(function() {
         if (playerChoice === undefined) {
-            console.log("Nothing to see here.");
-        } else {
-            playRound(playerChoice, getComputerChoice());
+            console.log("Nothing to see here.")
         }
-    }
+        console.log("Yippee!");
+        playRound(playerChoice, getComputerChoice());
+    });
+
+    roundLoop.catch(function () {
+        return 1;
+    });
 }
 
 function playerInput() {
-    playerInputField.addEventListener("keypress", function handleKeyPress(event) {
+    playerInputField.addEventListener("keypress", (event) => {
         if (event.key === "Enter") {
             let playerChoice = playerInputField.value.toLowerCase();
             console.log(playerChoice);
@@ -74,10 +81,9 @@ function playerInput() {
                 playerInputField.content = '';
             } else {
                 playerInputField.content = '';
-                callback(playerChoice);
             }
             playerInputField.content = '';
-            playerInputField.removeEventListener("keypress", handleKeyPress);
+            playerInputField.removeEventListener("keypress", event);
         }
     });
     playerInputField.content = '';
