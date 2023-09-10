@@ -10,6 +10,7 @@ startGame.addEventListener("click", () =>
 const playerScore = document.querySelector(".player-score");
 const computerScore = document.querySelector(".computer-score");
 const playerInputField = document.getElementById("player-input");
+playerInputField.value = '';
 
 function getComputerChoice() {
     let computerChoice;
@@ -56,25 +57,27 @@ function game() {
     score = 0;
 
     for (let i = 0; i < 3; i++) {
-        let playerChoice;
-        playerInput();
+        playerInput((playerChoice) => {
+            console.log(playRound(playerChoice, computerChoice));
+            console.log(`Your score is ${score}.`);
+        });
         let computerChoice = getComputerChoice();
-        console.log(playRound(playerChoice, computerChoice));
-        console.log(`Your score is ${0}.`);
-        
     }
 }
 
-function playerInput() {
+function playerInput(callback) {
     playerInputField.addEventListener("keypress", (event) => {
         if (event.key === "Enter") {
-            playerChoice = playerInputField.value.toLowerCase();
+            let playerChoice = playerInputField.value.toLowerCase();
             console.log(playerChoice);
 
             if (playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors") {
                 console.log("Choose either rock, paper, or scissors!");
+                playerInputField.content = '';
+            } else {
+                callback(playerChoice);
+                playerInputField.content = '';
             }
-            return playerChoice;
         }
     });
 }
