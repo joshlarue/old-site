@@ -10,8 +10,8 @@ startGame.addEventListener("click", () =>
 const playerScore = document.querySelector(".player-score");
 const computerScore = document.querySelector(".computer-score");
 const playerInputField = document.getElementById("player-input");
+const playerInputButton = document.getElementById("input-button");
 playerInputField.value = '';
-console.log(playerInputField);
 
 function getComputerChoice() {
     let computerChoice;
@@ -20,21 +20,16 @@ function getComputerChoice() {
     switch (randomNumber) {
         case 1:
             return computerChoice = "rock";
-            break;
         case 2:
             return computerChoice = "paper";
-            break;
         case 3:
             return computerChoice = "scissors";
-            break;
         default:
             return 1;
-            break;
     }
 }
 
-function playRound(playerChoice, computerChoice) {
-
+function playRound(playerChoice, computerChoice) {    
     if (playerChoice == computerChoice) {
         console.log("You tied!");
     } else if (
@@ -50,55 +45,36 @@ function playRound(playerChoice, computerChoice) {
             cScore++;
             computerScore.textContent = `Computer score is ${cScore}.`;
         }
+        console.log(`Your score is ${score}.`);
     return score;
 }
 
 function game() {
     console.log("game started");
     score = 0;
+    cScore = 0;
 
-    playerInputField.addEventListener("leypress", function handleKeyPress(event) {
-        if (event.key === "Enter") {
-            let playerChoice = playerInputField.value.toLowerCase();
-            console.log(`You choose ${playerChoice}.`);
-            if (playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors") {
-                console.log("Choose either rock, paper, or scissors!");
-                playerInputField.content = '';
-            } else {
-                callback(playerChoice);
-                playerInputField.content = '';
-            }
-            playerInputField.removeEventListener("keypress", handleKeyPress);
-        }
-    })
-    
-    for (let i = 0; i < 3; i++) {
-        playerInput((playerChoice) => {
-            console.log(playRound(playerChoice, computerChoice));
-            console.log(`Your score is ${score}.`);
-        });
-        let computerChoice = getComputerChoice();
-        playerInputField.content = '';
-    }
-    playerInputField.content = '';
+    playerChoice = playerInput();
+    console.log(playerChoice);
+    playRound(playerChoice, getComputerChoice());
+    console.log("played round");
 }
 
-function playerInput(callback) {
-    playerInputField.addEventListener("keypress", function handleKeyPress(event) {
-        if (event.key === "Enter") {
-            let playerChoice = playerInputField.value.toLowerCase();
-            console.log(playerChoice);
+function playerInput() {
+    playerInputButton.addEventListener("click", () => {
+        console.log("Clicked!");
+        let playerChoice = playerInputField.value.toLowerCase();
 
-            if (playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors") {
-                console.log("Choose either rock, paper, or scissors!");
-                playerInputField.content = '';
-            } else {
-                playerInputField.content = '';
-                callback(playerChoice);
-            }
+        if (playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors") {
+            console.log("Choose either rock, paper, or scissors!");
             playerInputField.content = '';
-            playerInputField.removeEventListener("keypress", handleKeyPress);
+        } else {
+            console.log(playerChoice);
+            return playerChoice;
         }
+        playerInputField.content = '';
+        console.log(playerChoice);
     });
-    playerInputField.content = '';
+    console.log(`Playerchoice is ${playerChoice}.`);
+    return playerChoice;
 }
