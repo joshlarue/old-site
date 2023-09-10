@@ -11,6 +11,7 @@ const playerScore = document.querySelector(".player-score");
 const computerScore = document.querySelector(".computer-score");
 const playerInputField = document.getElementById("player-input");
 playerInputField.value = '';
+console.log(playerInputField);
 
 function getComputerChoice() {
     let computerChoice;
@@ -62,6 +63,7 @@ function game() {
             console.log(`Your score is ${score}.`);
         });
         let computerChoice = getComputerChoice();
+        playerInputField.content = '';
     }
 }
 
@@ -75,9 +77,11 @@ function playerInput(callback) {
                 console.log("Choose either rock, paper, or scissors!");
                 playerInputField.content = '';
             } else {
-                callback(playerChoice);
                 playerInputField.content = '';
+                callback(playerChoice);
             }
+            playerInputField.content = '';
         }
     });
+    playerInputField.content = '';
 }
