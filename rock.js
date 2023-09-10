@@ -1,5 +1,6 @@
 let score = 0;
 let cScore = 0;
+let round = 0;
 
 const startGame = document.querySelector(".start-game");
 
@@ -11,6 +12,7 @@ const playerScore = document.querySelector(".player-score");
 const computerScore = document.querySelector(".computer-score");
 const playerInputField = document.getElementById("player-input");
 const playerInputButton = document.querySelector(".input-button");
+const result = document.querySelector(".result");
 playerInputField.value = '';
 
 function getComputerChoice() {
@@ -31,21 +33,20 @@ function getComputerChoice() {
 
 function playRound(playerChoice, computerChoice) {    
     if (playerChoice == computerChoice) {
-        console.log("You tied!");
+        result.textContent = `You tied! You both chose ${playerChoice}`;
     } else if (
         (playerChoice == "rock" && computerChoice == "scissors") ||
         (playerChoice == "scissors" && computerChoice == "paper") ||
         (playerChoice == "paper" && computerChoice == "rock")
         ) {
-            console.log(`You won! ${playerChoice} beats ${computerChoice}.`);
+            result.textContent = `You won! ${playerChoice} beats ${computerChoice}.`;
             score++;
             playerScore.textContent = `Your score is ${score}.`
         } else {
-            console.log(`You lost! ${computerChoice} beats ${playerChoice}.`);
+            result.textContent = `You lost! ${computerChoice} beats ${playerChoice}.`;
             cScore++;
             computerScore.textContent = `Computer score is ${cScore}.`;
         }
-        console.log(`Your score is ${score}.`);
     return score;
 }
 
@@ -54,6 +55,9 @@ function game() {
     score = 0;
     cScore = 0;
     playerInput();
+    if (round > 3) {
+        console.log("Game over!");
+    }
 }
 
 function playerInput() {
@@ -62,15 +66,15 @@ function playerInput() {
         let playerChoice = playerInputField.value.toLowerCase();
 
         if (playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors") {
-            console.log("Choose either rock, paper, or scissors!");
-            playerInputField.content = '';
+            result.textContent("Choose either rock, paper, or scissors!");
+            playerInputField.value = '';
         } else {
             console.log(playerChoice);
             playRound(playerChoice, getComputerChoice());
+            round++;
+            playerInputField.value = "";
             return playerChoice;
         }
-        playerInputField.content = '';
-        console.log(playerChoice);
         return playerChoice;
     });
 }
