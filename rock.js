@@ -57,6 +57,21 @@ function game() {
     console.log("game started");
     score = 0;
 
+    playerInputField.addEventListener("leypress", function handleKeyPress(event) {
+        if (event.key === "Enter") {
+            let playerChoice = playerInputField.value.toLowerCase();
+            console.log(`You choose ${playerChoice}.`);
+            if (playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors") {
+                console.log("Choose either rock, paper, or scissors!");
+                playerInputField.content = '';
+            } else {
+                callback(playerChoice);
+                playerInputField.content = '';
+            }
+            playerInputField.removeEventListener("keypress", handleKeyPress);
+        }
+    })
+    
     for (let i = 0; i < 3; i++) {
         playerInput((playerChoice) => {
             console.log(playRound(playerChoice, computerChoice));

@@ -20,21 +20,16 @@ function getComputerChoice() {
     switch (randomNumber) {
         case 1:
             return computerChoice = "rock";
-            break;
         case 2:
             return computerChoice = "paper";
-            break;
         case 3:
             return computerChoice = "scissors";
-            break;
         default:
             return 1;
-            break;
     }
 }
 
 function playRound(playerChoice, computerChoice) {
-
     if (playerChoice == computerChoice) {
         console.log("You tied!");
     } else if (
@@ -56,16 +51,22 @@ function playRound(playerChoice, computerChoice) {
 function game() {
     console.log("game started");
     score = 0;
+    cScore = 0;
+    let round = 0;
 
-    for (let i = 0; i < 3; i++) {
-        playerInput((playerChoice) => {
-            console.log(playRound(playerChoice, computerChoice));
-            console.log(`Your score is ${score}.`);
-        });
-        let computerChoice = getComputerChoice();
+    if (round >=3) {
+        console.log("Game over!");
+        score = 0;
+        cScore = 0;
         playerInputField.content = '';
+        return 0;
     }
-    playerInputField.content = '';
+
+    playerInput((playerChoice) => {
+        console.log(playRound(playerChoice, getComputerChoice()));
+        console.log(`Your score is ${score}.`);
+        round++;
+    });
 }
 
 function playerInput(callback) {
