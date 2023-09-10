@@ -52,9 +52,9 @@ function game() {
     console.log("game started");
     score = 0;
     cScore = 0;
-
+    
     let roundLoop = new Promise(function (resolve, reject) {
-        playerChoice = playerInput();
+        playerInput();
     });
 
     roundLoop.then(function() {
@@ -74,7 +74,6 @@ function playerInput() {
     playerInputField.addEventListener("keypress", (event) => {
         if (event.key === "Enter") {
             let playerChoice = playerInputField.value.toLowerCase();
-            console.log(playerChoice);
 
             if (playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors") {
                 console.log("Choose either rock, paper, or scissors!");
