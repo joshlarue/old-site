@@ -80,7 +80,7 @@ body {
 
 .result {
     flex: 1;
-    font-size: 62.5%;
+    font-size: 1em;
     border-radius: var(--radius);
     background-color: var(--secondary);
     padding-top: calc(var(--padding) / 4);
