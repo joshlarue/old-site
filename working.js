@@ -27,6 +27,7 @@ function playerInput() {
     });
 
     resetBtn.addEventListener("click", () => {
+        console.log("clicked");
         score = 0;
         cScore = 0;
         result.textContent = "";
