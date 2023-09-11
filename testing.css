@@ -81,6 +81,8 @@ body {
 .result {
     flex: 1;
     font-size: 1em;
+    justify-content: center;
+    align-content: center;
     border-radius: var(--radius);
     background-color: var(--secondary);
     padding-top: calc(var(--padding) / 4);
