@@ -1,16 +1,36 @@
 let score = 0;
 let cScore = 0;
-
-const startGame = document.querySelector(".start-game");
-
-startGame.addEventListener("click", () =>
-    game()
-);
+let playerChoice;
 
 const playerScore = document.querySelector(".player-score");
 const computerScore = document.querySelector(".computer-score");
-const playerInputField = document.getElementById("player-input");
-playerInputField.value = '';
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorsBtn = document.querySelector(".scissors");
+const resetBtn = document.querySelector(".reset");
+const result = document.querySelector(".result");
+
+function playerInput() {
+    rockBtn.addEventListener("click", () => {
+        playerChoice = "rock";
+        playRound(playerChoice, getComputerChoice());
+    });
+
+    paperBtn.addEventListener("click", () => {
+        playerChoice = "paper";
+        playRound(playerChoice, getComputerChoice());
+    });
+
+    scissorsBtn.addEventListener("click", () => {
+        playerChoice = "scissors";
+        playRound(playerChoice, getComputerChoice());
+    });
+
+    resetBtn.addEventListener("click", () => {
+        score = 0;
+        cScore = 0;
+    });
+}
 
 function getComputerChoice() {
     let computerChoice;
@@ -30,60 +50,21 @@ function getComputerChoice() {
 
 function playRound(playerChoice, computerChoice) {    
     if (playerChoice == computerChoice) {
-        console.log("You tied!");
+        result.textContent = `You tied! You both chose ${playerChoice}`;
     } else if (
         (playerChoice == "rock" && computerChoice == "scissors") ||
         (playerChoice == "scissors" && computerChoice == "paper") ||
         (playerChoice == "paper" && computerChoice == "rock")
         ) {
-            console.log(`You won! ${playerChoice} beats ${computerChoice}.`);
+            result.textContent = `You won! ${playerChoice} beats ${computerChoice}.`;
             score++;
             playerScore.textContent = `Your score is ${score}.`
         } else {
-            console.log(`You lost! ${computerChoice} beats ${playerChoice}.`);
+            result.textContent = `You lost! ${computerChoice} beats ${playerChoice}.`;
             cScore++;
             computerScore.textContent = `Computer score is ${cScore}.`;
         }
-        console.log(`Your score is ${score}.`);
     return score;
 }
 
-function game() {
-    console.log("game started");
-    score = 0;
-    cScore = 0;
-    
-    let roundLoop = new Promise(function (resolve, reject) {
-        playerInput();
-    });
-
-    roundLoop.then(function() {
-        if (playerChoice === undefined) {
-            console.log("Nothing to see here.")
-        }
-        console.log("Yippee!");
-        playRound(playerChoice, getComputerChoice());
-    });
-
-    roundLoop.catch(function () {
-        return 1;
-    });
-}
-
-function playerInput() {
-    playerInputField.addEventListener("keypress", (event) => {
-        if (event.key === "Enter") {
-            let playerChoice = playerInputField.value.toLowerCase();
-
-            if (playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors") {
-                console.log("Choose either rock, paper, or scissors!");
-                playerInputField.content = '';
-            } else {
-                playerInputField.content = '';
-            }
-            playerInputField.content = '';
-            playerInputField.removeEventListener("keypress", event);
-        }
-    });
-    playerInputField.content = '';
-}
+playerInput();
