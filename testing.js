@@ -1,12 +1,7 @@
 let score = 0;
 let cScore = 0;
 let round = 0;
-
-const startGame = document.querySelector(".start-game");
-
-startGame.addEventListener("click", () =>
-    game()
-);
+let playerChoice;
 
 const playerScore = document.querySelector(".player-score");
 const computerScore = document.querySelector(".computer-score");
@@ -14,6 +9,19 @@ const rockBtn = document.querySelector(".rock");
 const paperBtn = document.querySelector(".paper");
 const scissorsBtn = document.querySelector(".scissors");
 const resetBtn = document.querySelector(".reset");
+
+rockBtn.addEventListener("click", () => {
+    playerChoice = "rock"; 
+});
+
+paperBtn.addEventListener("click", () => {
+    playerChoice = "paper";
+});
+
+scissorsBtn.addEventListener("click", () => {
+    playerChoice = "scissors";
+});
+
 
 function getComputerChoice() {
     let computerChoice;
