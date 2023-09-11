@@ -10,18 +10,23 @@ const paperBtn = document.querySelector(".paper");
 const scissorsBtn = document.querySelector(".scissors");
 const resetBtn = document.querySelector(".reset");
 
-rockBtn.addEventListener("click", () => {
-    playerChoice = "rock"; 
-});
+function playerInput() {
+    rockBtn.addEventListener("click", () => {
+        playerChoice = "rock"; 
+    });
 
-paperBtn.addEventListener("click", () => {
-    playerChoice = "paper";
-});
+    paperBtn.addEventListener("click", () => {
+        playerChoice = "paper";
+    });
 
-scissorsBtn.addEventListener("click", () => {
-    playerChoice = "scissors";
-});
+    scissorsBtn.addEventListener("click", () => {
+        playerChoice = "scissors";
+    });
 
+    resetBtn.addEventListener("click", () => {
+        game();
+    });
+}
 
 function getComputerChoice() {
     let computerChoice;
@@ -55,6 +60,8 @@ function playRound(playerChoice, computerChoice) {
             cScore++;
             computerScore.textContent = `Computer score is ${cScore}.`;
         }
+    round++;
+    console.log(round);
     return score;
 }
 
@@ -68,6 +75,4 @@ function game() {
     }
 }
 
-function playerInput() {
-
-}
+game();
