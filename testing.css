@@ -13,6 +13,9 @@ body {
     background-color: var(--base);
 }
 
+.hero {
+    padding-bottom: 2rem;
+}
 .hero-header-text {
     color: var(--h);
 }
@@ -60,7 +63,28 @@ body {
     border: none;
 }
 
+.choices {
+    padding-bottom: 2rem;
+}
+
+.results {
+    display: flex;
+    justify-content: center;
+}
 .results-box {
     color: var(--p);
+    display: flex;
+    flex: 1;
+    gap: 1em;
+}
+
+.result {
+    flex: 1;
+    font-size: 62.5%;
+    border-radius: var(--radius);
     background-color: var(--secondary);
+    padding-top: calc(var(--padding) / 4);
+    padding-bottom: calc(var(--padding) / 4);
+    padding-left: calc(var(--padding) / 2);
+    padding-right: calc(var(--padding) / 2);
 }
