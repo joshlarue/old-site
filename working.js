@@ -29,6 +29,9 @@ function playerInput() {
     resetBtn.addEventListener("click", () => {
         score = 0;
         cScore = 0;
+        result.textContent = "";
+        playerScore.textContent = "";
+        computerScore.textContent = "";
     });
 }
 
