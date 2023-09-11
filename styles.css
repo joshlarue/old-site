@@ -72,21 +72,36 @@ body {
     justify-content: center;
 }
 .results-box {
+    width: 35%;
     color: var(--p);
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
     flex: 1;
     gap: 1em;
 }
 
-.result {
-    justify-content: center;
-    align-content: center;
+.result-div {
+    width: 20vw;
+    align-self: center;
+    justify-self: center;
     flex: 1;
     font-size: 1em;
+    justify-content: center;
+    align-content: center;
     border-radius: var(--radius);
     background-color: var(--secondary);
     padding-top: calc(var(--padding) / 4);
     padding-bottom: calc(var(--padding) / 4);
     padding-left: calc(var(--padding) / 2);
     padding-right: calc(var(--padding) / 2);
+}
+
+.green {
+    background-color:hsl(148, 29%, 40%);
+}
+
+.red {
+    background-color: #a86165;
 }
