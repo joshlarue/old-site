@@ -1,3 +1,12 @@
+:root {
+    --radius: clamp(0.5rem, 0.478vw + 0.347rem, 1rem);
+    --padding: clamp(1.5rem, 3.346vw + 0.429rem, 5rem);
+
+}
+
+body {
+    background-color: black;
+}
 .hero {
     color: white;
 }
@@ -19,6 +28,30 @@
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    border-radius: 10em;
+    gap: 2rem;
+}
 
+.button-main {
+    border-radius: var(--radius);
+    padding-top: calc(var(--padding) / 2);
+    padding-bottom: calc(var(--padding) / 2);
+    padding-right: calc(var(--padding) / 2);
+    padding-left: calc(var(--padding) / 2);
+    width: 10rem;
+    align-self: center;
+}
+
+.button-secondary {
+    border-radius: var(--radius);
+    padding-top: calc(var(--padding) / 4);
+    padding-bottom: calc(var(--padding) / 4);
+    padding-right: calc(var(--padding) / 4);
+    padding-left: calc(var(--padding) / 4);
+    width: 5rem;
+    align-self: center;
+    font-size: 62.5%;
+}
+
+.results {
+    color: white;
 }
