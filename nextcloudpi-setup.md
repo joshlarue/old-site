@@ -1,11 +1,11 @@
-# Setting up a NextcloudPi instance on a Raspberry Pi 4 (With Troubleshooting Steps)
+# Setting up a NextcloudPi instance with RAID on a Raspberry Pi 4 (With Troubleshooting Steps)
 This guide includes setting up NCP with a Cloudflare tunnel to expose the pi outside your network without port forwarding, and it also includes setup instructions for a WiFi AP. It will include some troubleshooting steps as well for issues that I had while setting up.
 
 ## Materials needed
 - Raspberry Pi 4 (you can use an older model but I have not tested with an older model!)
 - 8GB SD card
 - USB C cable (to power the Pi)
-- External storage (I used 2 2TB Seagate hard drives and a hard drive dock with USB 3)
+- External storage (I used two 2TB Seagate hard drives and a hard drive dock with USB 3)
 - Ethernet cable + ethernet adaptor for your computer
 
 ## Downloading and Installing NextcloudPi
@@ -41,3 +41,11 @@ timedatectl
 to check if your time and time zone is set correctly. If it is not, [this](https://www.howtogeek.com/782032/how-to-use-the-timedatectl-command-on-linux/) article will help you with the timedatectl command.
 
 ## External storage setup
+I used two 2TB Seagate Barracuda HDDs with a cheap [docking station](https://www.bestbuy.ca/en-ca/product/insignia-usb-3-0-dual-hard-drive-docking-station-only-at-best-buy/15815030) from Best Buy. I just plugged the hard drives in, powered up the dock, and connected it to my Pi.
+
+[This article](https://www.stewright.me/2017/08/create-raid-volume-raspberry-pi/) by Ste Wright describes in good detail how to set up a RAID volume with this setup.
+
+Once you have mounted it to the directory where you'd like your files to live, navigate back to https://nextcloud.local:4443 and, under the "Config" section, select nc-datadir. Input your new directory where your storage is located and ensure the operation is successful.
+
+## If you have come this far and all you want is a Nextcloud instance on your home network, you are done!
+If you'd like to configure Cloudflare tunnels so that you can access your Pi outside of your home network without port forwarding, or if you'd like to set up a wireless AP with the same Pi, feel free to continue!
