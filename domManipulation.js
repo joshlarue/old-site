@@ -19,3 +19,7 @@ container.appendChild(newDiv);
 const h1 = document.createElement('h1');
 h1.textContent = "I'm in a div";
 newDiv.appendChild(h1);
+
+const newParagraph = document.createElement('p');
+newParagraph.textContent = 'ME TOO!';
+newDiv.appendChild(newParagraph);
