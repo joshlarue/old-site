@@ -48,4 +48,5 @@ I used two 2TB Seagate Barracuda HDDs with a cheap [docking station](https://www
 Once you have mounted it to the directory where you'd like your files to live, navigate back to https://nextcloud.local:4443 and, under the "Config" section, select nc-datadir. Input your new directory where your storage is located and ensure the operation is successful.
 
 ## If you have come this far and all you want is a Nextcloud instance on your home network, you are done!
-If you'd like to configure Cloudflare tunnels so that you can access your Pi outside of your home network without port forwarding, or if you'd like to set up a wireless AP with the same Pi, feel free to continue!
+If you'd like to configure Cloudflare tunnels so that you can access your Pi outside of your home network without port forwarding, or if you'd like to set up a wireless AP with the same Pi, feel free to continue!i
+
