@@ -3,8 +3,9 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1">
     <title>Shopping list example</title>
+    <link href="shoppinglist.css" rel="stylesheet"/>
     <style>
       li {
         margin-bottom: 10px;
@@ -20,11 +21,12 @@
   <body>
 
     <h1>My shopping list</h1>
-
-    <div>
-      <label for="item">Enter a new item:</label>
-      <input type="text" name="item" id="item">
-      <button>Add item</button>
+    <div class="input-div">
+        <div class="input">
+            <label for="item">Enter a new item:</label>
+            <input class="input-box" type="text" name="item" id="item">
+            <button>Add item</button>
+            </div>
     </div>
 
     <ul>

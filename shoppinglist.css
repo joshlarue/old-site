@@ -1,0 +1,14 @@
+h1 {
+    width: 100%;
+    text-align: center;
+}
+
+.input-div {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.input-box {
+    width: 75px;
+}
