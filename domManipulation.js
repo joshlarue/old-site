@@ -23,3 +23,8 @@ newDiv.appendChild(h1);
 const newParagraph = document.createElement('p');
 newParagraph.textContent = 'ME TOO!';
 newDiv.appendChild(newParagraph);
+
+const btn = document.querySelector('#btn');
+btn.addEventListener('click', function (e) {
+    e.target.style.background = 'blue';
+});
