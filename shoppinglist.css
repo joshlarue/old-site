@@ -12,3 +12,8 @@ h1 {
 .input-box {
     width: 75px;
 }
+
+ul {
+    display: flex;
+    justify-content: center;
+}
