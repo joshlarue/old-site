@@ -40,7 +40,19 @@
             grocery = input.value;
             console.log(grocery);
             input.value = '';
-        })
+            const newLi = document.createElement('li');
+            const newSpan = document.createElement('span');
+            const newBtn = document.createElement('button');
+            list.appendChild(newLi);
+            newLi.appendChild(newSpan);
+            newLi.appendChild(newBtn);
+            newSpan.textContent = grocery;
+            newBtn.textContent = 'Delete';
+            newBtn.addEventListener('click', () => {
+                list.removeChild(newLi);
+            });
+            input.focus();
+        });
     </script>
   </body>
 </html>
