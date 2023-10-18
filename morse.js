@@ -29,7 +29,6 @@ submitMorse.addEventListener("click", () => {
     message = [];
     for (i = 0; i < morseToTranslate.length; i++) {
         char = morseToTranslate[i];
-        console.log(char);
         for (key in morseCode) {
             if (morseCode[key] == char) {
                 message.push(key);
