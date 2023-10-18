@@ -8,5 +8,13 @@ console.log(morseCode);
 
 e2mInput = document.querySelector(".e2m");
 m2eInput = document.querySelector(".m2e");
-submit = document.querySelector(".submit");
+submitEnglish = document.querySelector(".submit-english");
+submitMorse = document.querySelector(".submit-morse")
 result = document.querySelector(".result");
+
+submitEnglish.addEventListener("click", () => {
+    englishToTranslate = e2mInput.value;
+    for (i = 0; i < englishToTranslate.length; i++) {
+        console.log(morseCode[englishToTranslate[i]]);
+    }
+});
