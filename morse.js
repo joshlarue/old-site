@@ -15,8 +15,11 @@ result = document.querySelector(".result");
 submitEnglish.addEventListener("click", () => {
     englishToTranslate = e2mInput.value.toUpperCase()
     englishToTranslate = englishToTranslate.replace(/\s/g, '');
+    message = [];
     for (i = 0; i < englishToTranslate.length; i++) {
         char = englishToTranslate[i];
-        console.log(morseCode[char]);
+        message.push(morseCode[char]);
     }
+    message = message.join(' ');
+    result.textContent = `Your message translated to morse is ${message}`;
 });
