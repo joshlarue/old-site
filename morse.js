@@ -36,6 +36,6 @@ submitMorse.addEventListener("click", () => {
             }
         }
     }
-    message = message.join(' ');
+    message = message.join('');
     result.textContent = `Your message translated to english is ${message}`;
 });
