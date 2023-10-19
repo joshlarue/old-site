@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locate yourself!</title>
+</head>
+<body>
+    <!--Code from https://www.geojs.io/-->
+    Hello <span id="user_ip"><span class="icon"><i class="loader"></i></span></span>. The IP you're behind has a country code of <span id="user_countrycode"><span class="icon"><i class="loader"></i></span></span>.
+    <script type="application/javascript">
+        function geoip(json){
+        var userip = document.getElementById("user_ip");
+        var countrycode = document.getElementById("user_countrycode");
+        userip.textContent = json.ip;
+        countrycode.textContent = json.country_code;
+        }
+    </script>
+    <script async src="https://get.geojs.io/v1/ip/geo.js"></script>
+</body>
+</html>
