@@ -16,6 +16,7 @@ img {
 .grid-item {
     display: flex;
     width: 40rem;
+    background-color: aliceblue;
 }
 
 .grid-item:hover {
@@ -24,4 +25,8 @@ img {
 .grid-description {
     display: flex;
     align-items: center;
+}
+
+.grid-wrapper:nth-child(2) {
+    border: 5px solid red;
 }
