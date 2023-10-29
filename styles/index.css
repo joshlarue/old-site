@@ -1,0 +1,8 @@
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+img {
+    width: 20rem;
+}
