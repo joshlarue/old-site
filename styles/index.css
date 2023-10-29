@@ -27,6 +27,6 @@ img {
     align-items: center;
 }
 
-.grid-wrapper:nth-child(2) {
-    border: 5px solid red;
+.grid-item:nth-child(even) > .grid-description {
+    order: -1; 
 }
