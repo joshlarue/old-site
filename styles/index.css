@@ -1,3 +1,12 @@
+body {
+    background-color: hsl(261, 23%, 17%);
+}
+
+.hero-header {
+    text-align: center;
+    color: white;
+}
+
 .project-grid {
     display: flex;
     justify-content: center;
@@ -16,17 +25,30 @@ img {
 .grid-item {
     display: flex;
     width: 40rem;
-    background-color: aliceblue;
 }
 
 .grid-item:hover {
-    background-color: antiquewhite;
+    background-color: rgb(28, 0, 18);
 }
+
 .grid-description {
     display: flex;
     align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
 }
 
 .grid-item:nth-child(even) > .grid-description {
     order: -1; 
+}
+
+.description-p {
+    width: 80%;
+}
+
+.grid-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
