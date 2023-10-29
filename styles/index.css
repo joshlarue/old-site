@@ -1,8 +1,21 @@
 .project-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 img {
     width: 20rem;
+}
+
+.grid-item {
+    display: flex;
+    width: 40rem;
+}
+
+.grid-item:hover {
+    background-color: antiquewhite;
+}
+.grid-description {
+    display: flex;
+    align-items: center;
 }
