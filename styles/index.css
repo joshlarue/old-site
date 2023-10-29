@@ -24,7 +24,8 @@ img {
 
 .grid-item {
     display: flex;
-    width: 40rem;
+    width: clamp(20rem, 38.241vw + 7.763rem, 60rem);
+
 }
 
 .grid-item:hover {
@@ -51,4 +52,13 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 700px) {
+    .grid-item:nth-child(even) > .grid-description {
+        order: 1;
+    }
+    .grid-item {
+        display: block;
+    }
 }
