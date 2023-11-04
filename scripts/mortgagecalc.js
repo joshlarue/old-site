@@ -3,7 +3,7 @@ const downPaymentPc = document.querySelector('.down-payment-percentage');
 const mortgageTerm = document.querySelector('.mortgage-term');
 const amortPeriod = document.querySelector('.amortization-period');
 const submitBtn = document.querySelector('.input-submit');
-const output = document.querySelector('.output');
+const output = document.querySelector('.output-table');
 
 let data = {};
 
@@ -61,7 +61,7 @@ function calcInsurancePremium(data) {
 
 function calcTermAndPeriod(data) {
     rates = {1:0.0595, 2:0.059, 3:0.056, 5:0.0529, 10:0.06}
-    if (!(data['mortgage-term'] in rates)) {
+    if (!(data['mortgageterm'] in rates)) {
         console.log("Term not valid -- enter 1, 2, 3, 5, or 10.");
     }
     if (!(5 <= data['amortPeriod'] && data['amortPeriod'] & 5 == 0)) {
@@ -70,4 +70,36 @@ function calcTermAndPeriod(data) {
 
     data['eMonthlyInterest'] = ((1 + rates[data['mortgage-term']]/2)**2)**(1/12) - 1;
     data['monthlyPayment'] = data['principalAmount']*(data['eMonthlyInterest']*(1 + data['eMonthlyInterest'])**(data['amortPeriod']*12))/((1+data['eMonthlyInterest'])**(data['amortPeriod']*12) - 1);
+}
+
+function displayAmortizationSchedule(data) {
+
+
+    let openingBalance = data['principalAmt']
+    let monthlyInterestAmt = openingBalance * data['eMonthlyInterest']
+    let monthlyPrincipal = data['monthlyPayment'] - monthlyInterestAmt
+    let closingBalance = openingBalance - monthlyPrincipal
+    let sumPrincipal = 0
+    let sumInterest = 0
+    let term = data['mortgage-term'] * 12
+    let values = {1: month, 2: openingBalance, 3: data['monthlyPayment'], 4: monthlyPrincipal, 5: monthlyInterestAmt, 6: closingBalance}
+
+    for (month in range(1, term+1)) {
+        const row = document.createElement('tr');
+        output.appendChild(row);
+        for (let i = 0; i < 6; i++) {
+            const cell = document.createElement('td');
+            let cellText = document.createTextNote(values(i));
+            cell.appendChild(cellText);
+            row.appendChild(cell);
+        }
+        sumInterest += monthlyInterestAmt
+        sumPrincipal += monthlyPrincipal
+        openingBalance -= monthlyPrincipal
+        monthlyInterestAmt = openingBalance * data['eMonthlyInterest']
+        monthlyPrincipal = data['monthlyPayment'] - monthlyInterestAmt
+        closingBalance = openingBalance - monthlyPrincipal
+    }
+    
+    //print(f'{"Total"}{sumPrincipal):>39.2f} {sumInterest):>13.2f}')
 }
