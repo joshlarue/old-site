@@ -16,6 +16,7 @@ submitBtn.addEventListener('click', () => {
         output.textContent = 'You entered all numbers!';
         calcMinPcAndPayment(data);
         validatePercentage(data);
+        calcInsurancePremium(data);
     } else {
         output.textContent = 'Please enter all number values.';
     }
@@ -42,4 +43,17 @@ function validatePercentage(data) {
         console.log("Please enter a value between the minimum and 100");
         return false;
     }
+}
+
+function calcInsurancePremium(data) {
+    if (5 <= data['downPaymentInputPercent'] < 10) {
+        data['insurPrem'] = (data['purchasePrice'] - data['downPaymentAmt']) * 4 / 100;
+    } else if (10 <= data['downPaymentInputPercent'] < 15) {
+        data['insurPrem'] = (data['purchasePrice'] - data['downPaymentAmt']) * 3.1 / 100;
+    } else if (15 <= data['downPaymentInputPercent'] < 20) {
+        data['insurPrem'] = (data['purchasePrice'] - data['downPaymentAmt']) * 2.8 / 100;
+    } else {
+        data['insurPrem'] = 0;
+    }
+    data['principalAmt'] = data['purchasePrice'] - data['downPaymentAmount'] + data['insurPrem'];
 }
