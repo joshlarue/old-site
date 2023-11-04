@@ -17,6 +17,7 @@ submitBtn.addEventListener('click', () => {
         calcMinPcAndPayment(data);
         validatePercentage(data);
         calcInsurancePremium(data);
+        calcTermAndPeriod(data);
     } else {
         output.textContent = 'Please enter all number values.';
     }
@@ -56,4 +57,17 @@ function calcInsurancePremium(data) {
         data['insurPrem'] = 0;
     }
     data['principalAmt'] = data['purchasePrice'] - data['downPaymentAmount'] + data['insurPrem'];
+}
+
+function calcTermAndPeriod(data) {
+    rates = {1:0.0595, 2:0.059, 3:0.056, 5:0.0529, 10:0.06}
+    if (!(data['mortgage-term'] in rates)) {
+        console.log("Term not valid -- enter 1, 2, 3, 5, or 10.");
+    }
+    if (!(5 <= data['amortPeriod'] && data['amortPeriod'] & 5 == 0)) {
+        console.log("Enter a period between 5 and 25 years that is a multiple of 5.");
+    }
+
+    data['eMonthlyInterest'] = ((1 + rates[data['mortgage-term']]/2)**2)**(1/12) - 1;
+    data['monthlyPayment'] = data['principalAmount']*(data['eMonthlyInterest']*(1 + data['eMonthlyInterest'])**(data['amortPeriod']*12))/((1+data['eMonthlyInterest'])**(data['amortPeriod']*12) - 1);
 }
