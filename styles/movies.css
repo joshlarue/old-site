@@ -14,40 +14,68 @@
     --p: clamp(1.7rem, 1.53vw + 1.211rem, 3.3rem);
 }
 
-:root[data-theme='light'] {
-  --text: hsl(135, 46%, 5%);
-  --background: hsl(133, 50%, 93%);
-  --primary: hsl(316, 48%, 52%);
-  --secondary: hsl(16, 48%, 82%);
-  --accent: hsl(316, 48%, 42%);
+/* colors from realtimecolours.com -- awesome website! */
+:root[data-theme="light"] {
+  --text: hsl(0, 0%, 0%);
+  --background: hsl(268, 62%, 96%);
+  --primary: hsl(298, 63%, 65%);
+  --accent: hsl(328, 100%, 50%);
+  --secondary: hsl(328, 100%, 33%);
+  --outline: black;
+}
+:root[data-theme="dark"] {
+  --text: hsl(0, 0%, 100%);
+  --background: hsl(268, 62%, 4%);
+  --primary: hsl(298, 63%, 35%);
+  --accent: hsl(328, 100%, 50%);
+  --secondary: hsl(328, 100%, 67%);
+  --outline: rgb(255, 0, 179);
 }
 
-:root[data-theme='dark'] {
-  --text: hsl(135, 46%, 95%);
-  --background: hsl(133, 50%, 7%);
-  --primary: hsl(316, 48%, 48%);
-  --secondary: hsl(16, 48%, 18%);
-  --accent: hsl(316, 48%, 58%);
+body {
+    padding: 0.5rem;
+    background-color: var(--outline);
 }
 
 .header-wrapper {
     display: flex;
     width: 100%;
+    justify-content: space-between;
+    background-color: var(--background);
+    border-radius: 1rem;
+    object-fit: contain;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
     justify-content: center;
+    padding: 3rem;
+    gap: 1.5rem;
+}
+
+.header-left svg {
+    height: var(--p);
+    width: var(--p);
+    fill: var(--accent);
+}
+
+.header-right {
+    display: flex;
+    padding: 3rem;
+}
+
+.theme-toggle {
+    background: var(--accent);
+    border: none;
+}
+
+.navigation {
+    overflow: hidden;
     background-color: var(--secondary);
 }
 
-.logo-and-name {
-    display: flex;
-    width: 100%;
-}
-
-.nav-wrapper {
-    overflow: hidden;
-    background-color: var(--accent);
-}
-
-.nav-wrapper a {
+.navigation a {
     color: var(--text);
 }
 
