@@ -18,6 +18,7 @@ submitBtn.addEventListener('click', () => {
         validatePercentage(data);
         calcInsurancePremium(data);
         calcTermAndPeriod(data);
+        displayAmortizationSchedule(data);
     } else {
         output.textContent = 'Please enter all number values.';
     }
