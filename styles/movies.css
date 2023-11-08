@@ -14,10 +14,14 @@
     --p: clamp(1.7rem, 1.53vw + 1.211rem, 3.3rem);
 }
 
+::selection {
+    background-color: var(--accent);
+    color: white;
+}
 /* colors from realtimecolours.com -- awesome website! */
 :root[data-theme="light"] {
   --text: hsl(0, 0%, 0%);
-  --background: hsl(268, 62%, 96%);
+  --background: hsl(268, 91%, 91%);
   --primary: hsl(298, 63%, 65%);
   --accent: hsl(328, 100%, 50%);
   --secondary: hsl(328, 100%, 33%);
@@ -25,11 +29,11 @@
 }
 :root[data-theme="dark"] {
   --text: hsl(0, 0%, 100%);
-  --background: hsl(268, 62%, 4%);
+  --background: hsl(269, 64%, 9%);
   --primary: hsl(298, 63%, 35%);
   --accent: hsl(328, 100%, 50%);
   --secondary: hsl(328, 100%, 67%);
-  --outline: rgb(255, 0, 179);
+  --outline: rgb(67, 0, 47);
 }
 
 body {
@@ -42,7 +46,8 @@ body {
     width: 100%;
     justify-content: space-between;
     background-color: var(--background);
-    border-radius: 1rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
     object-fit: contain;
 }
 
@@ -65,26 +70,51 @@ body {
     padding: 3rem;
 }
 
-.theme-toggle {
-    background: var(--accent);
-    border: none;
-}
-
 .navigation {
-    overflow: hidden;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-btn {
     background-color: var(--secondary);
+    padding-inline: 2rem;
+    padding-block: 1rem;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 5px var(--secondary);
 }
 
-.navigation a {
-    color: var(--text);
+.nav-btn a {
+    font-size: 2rem;
 }
 
-h1 { font-size: var(--h1); }
-h2 { font-size: var(--h2); }
-h3 { font-size: var(--h3); }
-h4 { font-size: var(--h4); }
-h5 { font-size: var(--h5); }
-h6 { font-size: var(--h6); }
-p { font-size: var(--p); color: var(--text);}
-a { font-size: var(--p); text-decoration: none; }
-li { font-size: var(--p); }
+main {
+    height: 100vh;
+    background-color: var(--background);
+}
+
+h1 {
+    text-align: center;
+    border: 2px solid red;
+}
+
+.movie-rows-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.movie-row {
+    width: 80vw;
+    border: 2px solid red;
+}
+
+h1 { font-size: var(--h1); color: var(--text); }
+h2 { font-size: var(--h2); color: var(--text); }
+h3 { font-size: var(--h3); color: var(--text); }
+h4 { font-size: var(--h4); color: var(--text); }
+h5 { font-size: var(--h5); color: var(--text); }
+h6 { font-size: var(--h6); color: var(--text); }
+p { font-size: var(--p); color: var(--text); }
+a { font-size: var(--p); text-decoration: none; color: var(--text); }
+li { font-size: var(--p); color: var(--text); }
