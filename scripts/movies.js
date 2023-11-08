@@ -1,7 +1,6 @@
 const themeToggle = document.querySelector('.theme-toggle');
 const root = document.documentElement;
 const allMovieRows = document.querySelector('.movie-rows-wrapper');
-const movieRow = document.querySelector('.movie-row');
 
 
 window.onload = root.setAttribute('data-theme', 'light');
@@ -26,8 +25,17 @@ function populatePosters() {
   })
   .then(data => {
     const movies = data.results;
+    let moviesInRow = 0;
+    let currentRow = null;
 
     movies.forEach(movie => {
+
+      if (moviesInRow === 0 || moviesInRow > 5) {
+        movieRow = document.createElement('div');
+        movieRow.classList.add('movie-row');
+        allMovieRows.appendChild(currentRow);
+        moviesInRow = 0;
+      }
       const title = movie.original_title;
       const posterPath = movie.poster_path;
       const description = movie.overview;
@@ -47,6 +55,7 @@ function populatePosters() {
       movieCard.appendChild(movieImg);
       movieCard.appendChild(movieTitle);
       movieRow.appendChild(movieCard);
+      moviesInRow++;
     });
   })
   .catch(error => {

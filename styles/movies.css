@@ -90,7 +90,7 @@ body {
 }
 
 main {
-    height: 100vh;
+    min-height: 100vh;
     background-color: var(--background);
 }
 
@@ -101,12 +101,17 @@ h1 {
 
 .movie-rows-wrapper {
     display: flex;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .movie-row {
     width: 80vw;
     border: 2px solid red;
+    display: flex;
+    gap: 2rem;
+    overflow-x: scroll;
 }
 
 h1 { font-size: var(--h1); color: var(--text); }
