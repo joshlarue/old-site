@@ -2,9 +2,6 @@ const themeToggle = document.querySelector('.theme-toggle');
 const root = document.documentElement;
 const allMovieRows = document.querySelector('.movie-rows-wrapper');
 const movieRow = document.querySelector('.movie-row');
-const movieCard = document.querySelector('.movie-card');
-const movieImg = document.querySelector('.movie-img');
-const movieDescription = document.querySelector('.movie-description');
 
 
 window.onload = root.setAttribute('data-theme', 'light');
@@ -17,3 +14,42 @@ themeToggle.addEventListener('click', function () {
   }
 });
 
+window.onload = populatePosters();
+
+function populatePosters() {
+  fetch('/files/movies.json')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    const movies = data.results;
+
+    movies.forEach(movie => {
+      const title = movie.original_title;
+      const posterPath = movie.poster_path;
+      const description = movie.overview;
+      const posterUrl = `https://www.themoviedb.org/t/p/w440_and_h660_face${posterPath}`;
+      movieCard = document.createElement('div');
+      movieCard.classList.add('movie-card');
+      const movieImg = document.createElement('div');
+      movieImg.classList.add('movie-img');
+      const imgElement = document.createElement('img');
+      imgElement.src = posterUrl;
+      movieImg.appendChild(imgElement);
+      const movieTitle = document.createElement('div');
+      movieTitle.classList.add('movie-title')
+      const titleElement = document.createElement('p');
+      titleElement.textContent = title;
+      movieTitle.appendChild(titleElement);
+      movieCard.appendChild(movieImg);
+      movieCard.appendChild(movieTitle);
+      movieRow.appendChild(movieCard);
+    });
+  })
+  .catch(error => {
+    console.error('Error fetching or parsing JSON:', error);
+  });
+}
