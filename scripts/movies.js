@@ -60,12 +60,12 @@ function populatePosters() {
         movieTitle.classList.add('movie-title')
         const titleElement = document.createElement('p');
         titleElement.textContent = title;
-        movieDescriptionTitle.textContent = title;
+        //movieDescriptionTitle.textContent = title;
         movieDescriptionP.textContent = description;
         movieTitle.appendChild(titleElement);
         movieCard.appendChild(movieImg);
         movieImg.appendChild(movieDescription);
-        movieDescription.appendChild(movieDescriptionTitle);
+        //movieDescription.appendChild(movieDescriptionTitle);
         movieDescription.appendChild(movieDescriptionP);
         movieDescription.appendChild(watchBtn);
         movieCard.appendChild(movieTitle);
