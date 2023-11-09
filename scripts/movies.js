@@ -16,7 +16,7 @@ themeToggle.addEventListener('click', function () {
 window.onload = populatePosters();
 let movies = null;
 let moviesInRow = 0;
-let maxMovies = 5
+let maxMovies = 10;
 function populatePosters() {
   let numPages = 5;
   for (let i = 1; i < numPages + 1; i++) {

@@ -5,13 +5,14 @@
 
 :root {
     font-size: 62.5%;
-    --h1: clamp(5rem, 4.78vw + 3.47rem, 10rem);
+    --h1: clamp(4rem, 1.912vw + 3.388rem, 6rem);
     --h2: clamp(4rem, 3.824vw + 2.776rem, 8rem);
-    --h3: clamp(3rem, 2.868vw + 2.082rem, 6rem);
+    --h3: clamp(2rem, 0.956vw + 1.694rem, 3rem);
     --h4: clamp(2.3rem, 2.199vw + 1.596rem, 4.6rem);
     --h5: clamp(2rem, 2.199vw + 1.296rem, 4.3rem);
     --h6: clamp(1.9rem, 1.53vw + 1.411rem, 3.5rem);
-    --p: clamp(1.7rem, 1.53vw + 1.211rem, 3.3rem);
+    --p: clamp(1.7rem, 0.287vw + 1.608rem, 2rem)
+;
 }
 
 ::selection {
@@ -26,6 +27,7 @@
   --accent: hsl(328, 100%, 50%);
   --secondary: hsl(328, 100%, 33%);
   --outline: black;
+  --descr-background: rgba(255, 255, 255, 0.7);
 }
 :root[data-theme="dark"] {
   --text: hsl(0, 0%, 100%);
@@ -90,6 +92,7 @@ main {
 
 h1 {
     text-align: center;
+    padding-bottom: 2rem;
 }
 
 .movie-rows-wrapper {
@@ -109,6 +112,7 @@ h1 {
     padding: 3rem;
     border-radius: 3rem;
     box-shadow: 0 0 5px var(--accent);
+    max-height: 30rem;
 }
 
 .scroll-btn {
@@ -122,6 +126,12 @@ h1 {
     padding: 2rem;
     box-shadow: 0 0 10px black;
     position: relative;
+    min-width: 13rem;
+    max-width: 20rem;
+    max-height: 50rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .movie-card:hover {
@@ -131,6 +141,12 @@ h1 {
 
 .movie-img {
     position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .movie-card:hover .movie-description {
@@ -140,7 +156,8 @@ h1 {
 
 .movie-img img {
     border-radius: 1rem;
-    box-shadow: 0 0 20px black;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .movie-title {
@@ -159,9 +176,12 @@ h1 {
     display: none;
     top: 0;
     left: 0;
-    width: 40rem;
-    height: 100%;
+    max-height: 100%;
     overflow-y: scroll;
+    border-radius: 1rem;
+}
+.movie-description p { 
+    font-size: calc(var(--p) / 1.3);
 }
 
 h1 { font-size: var(--h1); color: var(--text); }
