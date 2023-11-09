@@ -123,7 +123,6 @@ h1 {
     .movie-card {
         flex-direction: row !important;
     }
-
     .movie-title p {
         display: inline;
         writing-mode: vertical-rl;
@@ -134,24 +133,19 @@ h1 {
 .movie-row {
     width: 80vw;
     display: flex;
-    gap: 2rem;
+    gap: var(--spacing-m);
     overflow-x: scroll;
     background-color: var(--primary);
-    padding: 3rem;
+    padding: calc(var(--spacing-m) * 1.5);
     border-radius: 3rem;
     box-shadow: 0 0 5px var(--accent);
-    height: clamp(20rem, 9.56vw + 16.941rem, 30rem);
-}
-
-.scroll-btn {
-    background-color: var(--accent);
-    width: 2rem;
+    height: clamp(15rem, 14.34vw + 10.411rem, 30rem);
 }
 
 .movie-card {
     border-radius: 2rem;
     background-color: var(--secondary);
-    padding: 2rem;
+    padding: var(--spacing-m);
     box-shadow: 0 0 5px black;
     position: relative;
     min-width: 13rem;
@@ -159,7 +153,7 @@ h1 {
     max-height: 50rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: calc(var(--spacing-m) / 2);
 }
 
 .movie-card:hover {
