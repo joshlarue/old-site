@@ -5,6 +5,7 @@
 
 :root {
     font-size: 62.5%;
+    font-family: sans-serif;
     --h1: clamp(4rem, 1.912vw + 3.388rem, 6rem);
     --h2: clamp(4rem, 3.824vw + 2.776rem, 8rem);
     --h3: clamp(2rem, 0.956vw + 1.694rem, 3rem);
@@ -13,7 +14,6 @@
     --h6: clamp(1.9rem, 1.53vw + 1.411rem, 3.5rem);
     --p: clamp(1rem, 0.956vw + 0.694rem, 2rem);
     --spacing-m: clamp(1rem, 0.956vw + 0.694rem, 2rem);
-;
 }
 
 ::selection {
@@ -197,6 +197,7 @@ h1 {
 
 .movie-title p {
     text-align: center;
+    font-weight: bold;
 }
 
 .movie-description {
