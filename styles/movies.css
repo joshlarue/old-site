@@ -34,11 +34,7 @@
   --accent: hsl(328, 100%, 50%);
   --secondary: hsl(328, 100%, 67%);
   --outline: rgb(67, 0, 47);
-}
-
-body {
-    padding: 0.5rem;
-    background-color: var(--outline);
+  --descr-background: rgba(0, 0, 0, 0.7);
 }
 
 .header-wrapper {
@@ -46,8 +42,6 @@ body {
     width: 100%;
     justify-content: space-between;
     background-color: var(--background);
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
     object-fit: contain;
 }
 
@@ -96,7 +90,6 @@ main {
 
 h1 {
     text-align: center;
-    border: 2px solid red;
 }
 
 .movie-rows-wrapper {
@@ -104,14 +97,71 @@ h1 {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    gap: 5rem;
 }
 
 .movie-row {
     width: 80vw;
-    border: 2px solid red;
     display: flex;
     gap: 2rem;
     overflow-x: scroll;
+    background-color: var(--primary);
+    padding: 3rem;
+    border-radius: 3rem;
+    box-shadow: 0 0 5px var(--accent);
+}
+
+.scroll-btn {
+    background-color: var(--accent);
+    width: 2rem;
+}
+
+.movie-card {
+    border-radius: 2rem;
+    background-color: var(--secondary);
+    padding: 2rem;
+    box-shadow: 0 0 10px black;
+    position: relative;
+}
+
+.movie-card:hover {
+    transition: 0.02s;
+    transform: scale(1.04);
+}
+
+.movie-img {
+    position: relative;
+}
+
+.movie-card:hover .movie-description {
+    background-color: var(--descr-background);
+    display: block;
+}
+
+.movie-img img {
+    border-radius: 1rem;
+    box-shadow: 0 0 20px black;
+}
+
+.movie-title {
+    display: flex;
+    justify-content: center;
+}
+
+.movie-title p {
+    text-align: center;
+}
+
+.movie-description {
+    position: absolute;
+    padding-block: 2rem;
+    padding-inline: 0.5rem;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 40rem;
+    height: 100%;
+    overflow-y: scroll;
 }
 
 h1 { font-size: var(--h1); color: var(--text); }

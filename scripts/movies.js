@@ -14,51 +14,71 @@ themeToggle.addEventListener('click', function () {
 });
 
 window.onload = populatePosters();
-
+let movies = null;
+let moviesInRow = 0;
+let maxMovies = 5
 function populatePosters() {
-  fetch('/files/movies.json')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    const movies = data.results;
-    let moviesInRow = 0;
-    let currentRow = null;
-
-    movies.forEach(movie => {
-
-      if (moviesInRow === 0 || moviesInRow > 5) {
-        movieRow = document.createElement('div');
-        movieRow.classList.add('movie-row');
-        allMovieRows.appendChild(currentRow);
-        moviesInRow = 0;
+  let numPages = 5;
+  for (let i = 1; i < numPages + 1; i++) {
+    fetch(`/files/movies${i}.json`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Response was not ok');
       }
-      const title = movie.original_title;
-      const posterPath = movie.poster_path;
-      const description = movie.overview;
-      const posterUrl = `https://www.themoviedb.org/t/p/w440_and_h660_face${posterPath}`;
-      movieCard = document.createElement('div');
-      movieCard.classList.add('movie-card');
-      const movieImg = document.createElement('div');
-      movieImg.classList.add('movie-img');
-      const imgElement = document.createElement('img');
-      imgElement.src = posterUrl;
-      movieImg.appendChild(imgElement);
-      const movieTitle = document.createElement('div');
-      movieTitle.classList.add('movie-title')
-      const titleElement = document.createElement('p');
-      titleElement.textContent = title;
-      movieTitle.appendChild(titleElement);
-      movieCard.appendChild(movieImg);
-      movieCard.appendChild(movieTitle);
-      movieRow.appendChild(movieCard);
-      moviesInRow++;
+      return response.json();
+    })
+    .then(data => {
+      movies = data.results;
+      movies.forEach(movie => {
+
+        if (moviesInRow === 0 || moviesInRow > maxMovies) {
+          movieRow = document.createElement('div');
+          movieRow.classList.add('movie-row');
+          allMovieRows.appendChild(movieRow);
+          moviesInRow = 0;
+        }
+        const title = movie.original_title;
+        const posterPath = movie.poster_path;
+        const description = movie.overview;
+        const posterUrl = `https://www.themoviedb.org/t/p/w440_and_h660_face${posterPath}`;
+        const movieCard = document.createElement('div');
+        movieCard.classList.add('movie-card');
+        const movieDescription = document.createElement('div');
+        const movieDescriptionTitle = document.createElement('h3');
+        movieDescriptionTitle.classList.add('description-title');
+        const movieDescriptionP = document.createElement('p');
+        const watchBtn = document.createElement('button');
+        watchBtn.classList.add('watch-button');
+        movieDescriptionP.classList.add('description-text');
+        movieDescription.classList.add('movie-description');
+        const movieImg = document.createElement('div');
+        movieImg.classList.add('movie-img');
+        const imgElement = document.createElement('img');
+        imgElement.src = posterUrl;
+        movieImg.appendChild(imgElement);
+        const movieTitle = document.createElement('div');
+        movieTitle.classList.add('movie-title')
+        const titleElement = document.createElement('p');
+        titleElement.textContent = title;
+        movieDescriptionTitle.textContent = title;
+        movieDescriptionP.textContent = description;
+        movieTitle.appendChild(titleElement);
+        movieCard.appendChild(movieImg);
+        movieImg.appendChild(movieDescription);
+        movieDescription.appendChild(movieDescriptionTitle);
+        movieDescription.appendChild(movieDescriptionP);
+        movieDescription.appendChild(watchBtn);
+        movieCard.appendChild(movieTitle);
+        movieRow.appendChild(movieCard);
+        moviesInRow++;
+      });
+      /*scrollBtn = document.createElement('button');
+      scrollBtn.classList.add('scroll-btn');
+      scrollBtn.classList.add('scroll-left');
+      movieRow.appendChild(scrollBtn);*/
+    })
+    .catch(error => {
+      console.error('Error fetching or parsing JSON:', error);
     });
-  })
-  .catch(error => {
-    console.error('Error fetching or parsing JSON:', error);
-  });
+  }
 }
