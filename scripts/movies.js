@@ -20,7 +20,7 @@ let maxMovies = 10;
 function populatePosters() {
   let numPages = 5;
   for (let i = 1; i < numPages + 1; i++) {
-    fetch(`/files/movies${i}.json`)
+    fetch(`/old-site/files/movies${i}.json`)
     .then(response => {
       if (!response.ok) {
         throw new Error('Response was not ok');
